@@ -29,7 +29,7 @@
       la = "ls -A";
       l = "ls -CF";
 
-      update = "sudo nixos-rebuild switch";
+      update = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       cleanup = "sudo nix-collect-garbage -d";
     };
 
