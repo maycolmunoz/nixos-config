@@ -1,18 +1,15 @@
-{ pkgs, ... }:
+{ ... }:
+
 {
   programs.zsh = {
     enable = true;
-
-    autosuggestions.enable = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
     enableCompletion = true;
 
-    ohMyZsh = {
+    oh-my-zsh = {
       enable = true;
-
       theme = "agnoster";
-
       plugins = [
         "git"
         "sudo"
@@ -28,19 +25,15 @@
       ll = "ls -lah";
       la = "ls -A";
       l = "ls -CF";
-
       update = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       cleanup = "sudo nix-collect-garbage -d";
     };
 
-    histSize = 10000;
-    histFile = "$HOME/.zsh_history";
-
-    setOptions = [
-      "HIST_IGNORE_DUPS"
-      "HIST_FIND_NO_DUPS"
-      "SHARE_HISTORY"
-    ];
+    history = {
+      size = 10000;
+      path = "$HOME/.zsh_history";
+      ignoreDups = true;
+      share = true;
+    };
   };
-
 }
