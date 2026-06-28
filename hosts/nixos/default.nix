@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -24,16 +19,6 @@
       variant = "";
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    tree
-    bat
-    wget
-    fastfetch
-    corefonts
-  ];
 
   system.stateVersion = "26.05";
 }

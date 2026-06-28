@@ -14,5 +14,6 @@
     ./system/locale.nix
     ./system/users.nix
     ./system/nix-settings.nix
+    ./system/packages.nix
   ];
 }
