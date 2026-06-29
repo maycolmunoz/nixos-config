@@ -4,6 +4,8 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  programs.dconf.enable = true;
+
   environment.gnome.excludePackages = with pkgs; [
     gnome-software
     gnome-tour

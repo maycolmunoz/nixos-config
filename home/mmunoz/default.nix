@@ -9,6 +9,7 @@
 
   imports = [
     ./zsh.nix
+    ./dconf.nix
   ];
 
   home.packages = with pkgs; [ ];
