@@ -18,5 +18,6 @@
     enable = true;
     settings.user.name = "itsmmunoz";
     settings.user.email = "estivenyeizon@gmail.com";
+    settings.init.defaultBranch = "main";
   };
 }

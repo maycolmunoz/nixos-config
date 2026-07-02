@@ -1,12 +1,5 @@
 { pkgs, ... }:
 
 {
-  programs.git = {
-    enable = true;
-    config = {
-      init = {
-        defaultBranch = "main";
-      };
-    };
-  };
+  programs.git.enable = true;
 }
