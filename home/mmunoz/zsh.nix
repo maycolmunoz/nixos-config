@@ -9,7 +9,7 @@
 
     oh-my-zsh = {
       enable = true;
-      theme = "";
+      theme = "agnoster";
       plugins = [
         "git"
         "sudo"
@@ -37,50 +37,4 @@
     };
   };
 
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-
-      nix_shell = {
-        symbol = "❄️ ";
-        format = "via [❄️ $state( \\($name\\))]($style) ";
-      };
-
-      directory = {
-        truncation_length = 3;
-        truncation_symbol = "…/";
-      };
-
-      git_commit = { only_detached = true; };
-
-      git_status = {
-        conflicted = "🏳";
-        ahead = "⇡\${count}";
-        behind = "⇣\${count}";
-        diverged = "⇕\${count}";
-        up_to_date = "✓";
-        stashed = "📦\${count}";
-        modified = "✎\${count}";
-        staged = "⊕\${count}";
-        renamed = "➜\${count}";
-        deleted = "✗\${count}";
-      };
-
-      cmd_duration = {
-        min_time = 2000;
-        show_milliseconds = false;
-      };
-
-      line_break.disable = false;
-
-      username = { show_always = false; };
-      hostname = { ssh_only = true; };
-
-      character = {
-        success_symbol = "[❄](bold cyan)";
-        error_symbol = "[❄](bold red)";
-      };
-    };
-  };
 }

@@ -3,6 +3,7 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      gtk-theme = "Adwaita-dark";
       cursor-theme = "Bibata-Modern-Classic";
       cursor-size = 28;
       icon-theme = "Papirus-Dark";
