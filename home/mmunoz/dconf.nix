@@ -5,7 +5,7 @@
       color-scheme = "prefer-dark";
       gtk-theme = "Adwaita-dark";
       cursor-theme = "Bibata-Modern-Classic";
-      cursor-size = 28;
+      cursor-size = 24;
       icon-theme = "Papirus-Dark";
     };
 
