@@ -6,6 +6,10 @@
 
   programs.dconf.enable = true;
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
   environment.gnome.excludePackages = with pkgs; [
     gnome-software
     gnome-tour
@@ -25,6 +29,7 @@
     gnomeExtensions.user-themes
     gnomeExtensions.blur-my-shell
     gnomeExtensions.clipboard-indicator
+    gnomeExtensions.caffeine
 
     bibata-cursors
     papirus-icon-theme

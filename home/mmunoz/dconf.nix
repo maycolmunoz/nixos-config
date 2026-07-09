@@ -40,6 +40,7 @@
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "blur-my-shell@aunetx"
         "clipboard-indicator@tudmotu.com"
+        "caffeine@patapon.info"
       ];
     };
 
@@ -59,7 +60,20 @@
       switch-to-workspace-9 = [ "<Super>9" ];
     };
 
+    "org/gnome/terminal/legacy/profiles:" = {
+      default = "b1dcc9dd-5262-4d8d-a863-c897e6d979b9";
+      list = [ "b1dcc9dd-5262-4d8d-a863-c897e6d979b9" ];
+    };
+
+    "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
+      visible-name = "Default";
+      font = "JetBrainsMono Nerd Font 12";
+      use-system-font = false;
+    };
+
     "org/gnome/shell/keybindings" = {
+      toggle-message-tray = [ ];
+      show-screenshot-ui = [ "<Super><Shift>s" ];
       switch-to-application-1 = [ ];
       switch-to-application-2 = [ ];
       switch-to-application-3 = [ ];
