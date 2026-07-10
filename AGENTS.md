@@ -15,18 +15,17 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | `flake.nix` | Entry point; pins nixpkgs (26.05) + home-manager (release-26.05) + nixpkgs-unstable |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager: zsh, dconf, gtk |
-| `modules/desktop/` | gnome.nix (GDM, GNOME packages, extensions) |
+| `home/mmunoz/` | Home-manager: zsh, git |
+| `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`) with system and home configs |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd) |
 | `modules/programs/` | firefox, zsh (system-level enable) |
-| `modules/system/` | locale, nix-settings, packages (stable + unstable), users |
+| `modules/system/` | boot, locale, nix-settings, packages (stable + unstable), users |
 
 ## Notable patterns
 
+- **Desktop selection**: `modules/desktop/default.nix` imports the active desktop. To switch desktops, change the import there and in `home/mmunoz/default.nix`.
+- **Desktop structure**: Each desktop has its own dir under `modules/desktop/` with `default.nix` (system) and `home.nix` (home-manager).
 - **Unstable packages**: imported inline in `modules/system/packages.nix` via `inputs.nixpkgs-unstable`. Add new unstable pkgs there by extending the `unstable` set.
-- **Excluded GNOME apps**: listed in `modules/desktop/gnome.nix` under `environment.gnome.excludePackages`.
-- **GNOME settings (dconf)**: in `home/mmunoz/dconf.nix`, not system-level.
-- **Theme**: GTK/icon/cursor declared in both `home/mmunoz/gtk.nix` (home-manager) and `home/mmunoz/dconf.nix` (dconf). Both must match.
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
 
 ## Commands

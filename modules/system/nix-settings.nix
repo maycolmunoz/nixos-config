@@ -14,9 +14,5 @@
 
   nix.optimise.automatic = true;
 
-  boot.tmp.cleanOnBoot = true;
-
-  zramSwap.enable = true;
-
   nixpkgs.config.allowUnfree = true;
 }

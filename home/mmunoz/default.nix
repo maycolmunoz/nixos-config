@@ -8,9 +8,8 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ../../modules/desktop/gnome/home.nix
     ./zsh.nix
-    ./dconf.nix
-    ./gtk.nix
   ];
 
   home.packages = with pkgs; [ ];
