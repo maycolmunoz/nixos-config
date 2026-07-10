@@ -8,7 +8,6 @@
     ./services/flatpak.nix
     ./services/fwupd.nix
     ./services/virtualisation.nix
-    ./programs/zsh.nix
     ./programs/firefox.nix
     ./system/boot.nix
     ./system/locale.nix

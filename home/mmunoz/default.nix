@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   home.username = "mmunoz";
@@ -8,11 +8,9 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ../../modules/desktop/gnome/home.nix
+    ./gnome.nix
     ./zsh.nix
   ];
-
-  home.packages = with pkgs; [ ];
 
   programs.git = {
     enable = true;

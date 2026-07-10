@@ -11,6 +11,7 @@
       "libvirtd"
     ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ ];
   };
+
+  programs.zsh.enable = true;
 }
