@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{pkgs, ...}: {
   home.username = "mmunoz";
   home.homeDirectory = "/home/mmunoz";
   home.stateVersion = "26.05";
@@ -10,6 +8,7 @@
   imports = [
     ./gnome.nix
     ./zsh.nix
+    ./cli.nix
   ];
 
   programs.git = {
@@ -18,4 +17,6 @@
     settings.user.email = "estivenyeizon@gmail.com";
     settings.init.defaultBranch = "main";
   };
+
+  programs.firefox.enable = true;
 }

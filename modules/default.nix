@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./desktop/default.nix
     ./services/pipewire.nix
@@ -8,7 +6,6 @@
     ./services/flatpak.nix
     ./services/fwupd.nix
     ./services/virtualisation.nix
-    ./programs/firefox.nix
     ./system/boot.nix
     ./system/locale.nix
     ./system/users.nix

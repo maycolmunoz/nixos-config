@@ -6,13 +6,13 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 
 ```
 ├── flake.nix
-├── hosts/nixos/    — host-specific (default.nix, hardware.nix)
-├── home/mmunoz/    — home-manager (zsh, gtk, dconf)
+├── home-manager.nix      — home-manager module config
+├── hosts/nixos/          — host-specific (default.nix, hardware.nix)
+├── home/mmunoz/          — home-manager (zsh, gtk, dconf, cli tools)
 └── modules/
-    ├── desktop/    — GNOME
-    ├── programs/   — firefox, zsh
-    ├── services/   — pipewire, flatpak, docker, libvirtd, printing, fwupd
-    └── system/     — locale, nix-settings, packages, users
+    ├── desktop/          — GNOME
+    ├── services/         — pipewire, flatpak, docker, libvirtd, printing, fwupd
+    └── system/           — locale, nix-settings, packages, users
 ```
 
 ## Usage
@@ -32,8 +32,9 @@ sudo nix-collect-garbage --delete-older-than 14d
 
 | Source | Packages |
 |--------|----------|
-| stable | tree, bat, btop, yazi, lazygit, obsidian, obs-studio, onlyoffice |
+| stable | tree, wget, fastfetch, corefonts, lazygit, obsidian, obs-studio, onlyoffice |
 | unstable | vscode, opencode, brave |
+| home-manager | bat, btop, yazi, firefox, editorconfig, direnv |
 
 ## Services
 

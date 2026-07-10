@@ -13,30 +13,33 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | Path | Purpose |
 |------|---------|
 | `flake.nix` | Entry point; pins nixpkgs (26.05) + home-manager (release-26.05) + nixpkgs-unstable |
+| `home-manager.nix` | Home-manager module configuration (useGlobalPkgs, user imports) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager: zsh, git, gnome (dconf + gtk) |
+| `home/mmunoz/` | Home-manager: zsh, git, gnome (dconf + gtk), cli tools (bat, btop, yazi, editorconfig, direnv) |
 | `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`) with system configs |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd) |
-| `modules/programs/` | firefox |
 | `modules/system/` | boot, locale, nix-settings, packages (stable + unstable), users |
 
 ## Notable patterns
 
 - **Desktop selection**: `modules/desktop/default.nix` imports the active desktop. To switch desktops, change the import there and in `home/mmunoz/default.nix`.
 - **Desktop structure**: Each desktop has its own dir under `modules/desktop/` with `default.nix` (system) and its home-manager config in `home/mmunoz/{name}.nix`.
-- **Unstable packages**: imported inline in `modules/system/packages.nix` via `inputs.nixpkgs-unstable`. Add new unstable pkgs there by extending the `unstable` set.
+- **Unstable packages**: Defined once in `flake.nix` as `pkgs-unstable` and passed via `specialArgs`. Add new unstable pkgs in `modules/system/packages.nix` by extending the `pkgs-unstable` set.
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
+- **Home-manager CLI tools**: User CLI tools with Home Manager modules (bat, btop, yazi, editorconfig, direnv) are in `home/mmunoz/cli.nix`.
 
 ## Commands
 
 - `update` (alias in zsh.nix) → rebuild
 - `nix flake update` — update all inputs
 - `sudo nix-collect-garbage --delete-older-than 14d` — GC (runs automatically weekly)
+- `cleanup` (alias in zsh.nix) → GC
 - `result/` is gitignored
 
 ## Conventions
 
 - All Nix files use `{ ... }: { }` style with trailing semicolons.
-- One module per file under `modules/{desktop,programs,services,system}/`.
+- One module per file under `modules/{desktop,services,system}/`.
+- User tools with Home Manager modules go in `home/mmunoz/cli.nix`.
 - Commit via conventional commits: `feat|fix|refactor|chore(scope): message`.
