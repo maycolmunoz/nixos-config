@@ -13,6 +13,9 @@
       obsidian
       obs-studio
       onlyoffice-desktopeditors
+      bat
+      btop
+      yazi
     ]
     ++ (with pkgs-unstable; [
       vscode

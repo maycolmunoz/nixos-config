@@ -10,6 +10,7 @@
       cursor-theme = "Bibata-Modern-Classic";
       cursor-size = 24;
       icon-theme = "Papirus-Dark";
+      monospace-font-name = "JetBrainsMono Nerd Font 12";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -70,8 +71,7 @@
 
     "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
       visible-name = "Default";
-      font = "JetBrainsMono Nerd Font 12";
-      use-system-font = false;
+      use-system-font = true;
     };
 
     "org/gnome/shell/keybindings" = {

@@ -1,22 +1,4 @@
 {pkgs, ...}: {
-  programs.bat = {
-    enable = true;
-    config.theme = "Dracula";
-  };
-
-  programs.btop = {
-    enable = true;
-    settings = {
-      color_theme = "Dracula";
-      vim_keys = true;
-    };
-  };
-
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   editorconfig = {
     enable = true;
     settings = {
