@@ -9,6 +9,7 @@
     ./gnome.nix
     ./zsh.nix
     ./cli.nix
+    ./firefox.nix
   ];
 
   programs.git = {
@@ -17,6 +18,4 @@
     settings.user.email = "estivenyeizon@gmail.com";
     settings.init.defaultBranch = "main";
   };
-
-  programs.firefox.enable = true;
 }
