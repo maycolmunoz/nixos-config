@@ -10,6 +10,7 @@
     ./zsh.nix
     ./cli.nix
     ./firefox.nix
+    ./ghostty.nix
   ];
 
   programs.git = {

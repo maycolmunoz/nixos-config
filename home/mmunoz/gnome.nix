@@ -29,7 +29,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       binding = "<Super>t";
-      command = "kgx";
+      command = "ghostty";
       name = "Open Terminal";
     };
 
@@ -62,16 +62,6 @@
       switch-to-workspace-7 = ["<Super>7"];
       switch-to-workspace-8 = ["<Super>8"];
       switch-to-workspace-9 = ["<Super>9"];
-    };
-
-    "org/gnome/terminal/legacy/profiles:" = {
-      default = "b1dcc9dd-5262-4d8d-a863-c897e6d979b9";
-      list = ["b1dcc9dd-5262-4d8d-a863-c897e6d979b9"];
-    };
-
-    "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
-      visible-name = "Default";
-      use-system-font = true;
     };
 
     "org/gnome/shell/keybindings" = {
