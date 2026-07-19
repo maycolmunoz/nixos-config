@@ -2,8 +2,10 @@
   pkgs,
   pkgs-unstable,
   ...
-}: {
-  environment.systemPackages = with pkgs;
+}:
+{
+  environment.systemPackages =
+    with pkgs;
     [
       tree
       wget
@@ -16,6 +18,7 @@
       bat
       btop
       yazi
+      nixfmt
     ]
     ++ (with pkgs-unstable; [
       vscode

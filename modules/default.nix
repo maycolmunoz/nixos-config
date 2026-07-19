@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./desktop/default.nix
     ./services/pipewire.nix

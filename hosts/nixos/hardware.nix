@@ -7,15 +7,22 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "ahci"
+    "xhci_pci"
+    "virtio_pci"
+    "sr_mod"
+    "virtio_blk"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/a8817acd-c90d-404f-91af-b2eee955a899";
@@ -25,23 +32,26 @@
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/a8817acd-c90d-404f-91af-b2eee955a899";
     fsType = "btrfs";
-    options = ["subvol=home"];
+    options = [ "subvol=home" ];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/a8817acd-c90d-404f-91af-b2eee955a899";
     fsType = "btrfs";
-    options = ["subvol=nix"];
+    options = [ "subvol=nix" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/BBF9-8EEE";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/dab3e047-f5cc-45c6-bb42-01467cb08f14";}
+    { device = "/dev/disk/by-uuid/dab3e047-f5cc-45c6-bb42-01467cb08f14"; }
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   programs.firefox = {
     enable = true;
 
@@ -12,14 +13,16 @@
       DisablePocket = true;
       DisableFirefoxScreenshots = true;
       DisableSetDesktopBackground = true;
-      ExtensionSettings = let
-        moz = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
-      in {
-        "google-translate@chromewebstore.google.com" = {
-          install_url = moz "google-translate";
-          installation_mode = "normal_installed";
+      ExtensionSettings =
+        let
+          moz = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
+        in
+        {
+          "google-translate@chromewebstore.google.com" = {
+            install_url = moz "google-translate";
+            installation_mode = "normal_installed";
+          };
         };
-      };
     };
 
     profiles.default = {
@@ -52,15 +55,23 @@
           "google".metaData.alias = "@g";
           "Nix Packages" = {
             name = "Nix Packages";
-            urls = [{
-              template = "https://search.nixos.org/packages";
-              params = [
-                {name = "type"; value = "packages";}
-                {name = "query"; value = "{searchTerms}";}
-              ];
-            }];
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = ["@np"];
+            definedAliases = [ "@np" ];
           };
         };
       };
@@ -68,13 +79,22 @@
       bookmarks = {
         force = true;
         settings = [
-          {name = "NixOS"; url = "https://nixos.org";}
-          {name = "NixOS Wiki"; url = "https://wiki.nixos.org/";}
+          {
+            name = "NixOS";
+            url = "https://nixos.org";
+          }
+          {
+            name = "NixOS Wiki";
+            url = "https://wiki.nixos.org/";
+          }
           "separator"
           {
             name = "GitHub";
             bookmarks = [
-              {name = "mi perfil"; url = "https://github.com/maycolmunoz";}
+              {
+                name = "mi perfil";
+                url = "https://github.com/maycolmunoz";
+              }
             ];
           }
         ];

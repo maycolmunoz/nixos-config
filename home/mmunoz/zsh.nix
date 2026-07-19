@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -26,6 +26,7 @@
       update = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       cleanup = "sudo nix-collect-garbage -d";
       nixos-history = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+      format-nix = "sudo nixfmt $(find /etc/nixos -name '*.nix' -not -path '*/result/*' -not -path '*/.git/*')";
     };
 
     history = {

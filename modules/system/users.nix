@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   users.users."mmunoz" = {
     isNormalUser = true;
     description = "Maycol Muñoz";
