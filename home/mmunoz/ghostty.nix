@@ -5,7 +5,7 @@
     installVimSyntax = true;
 
     settings = {
-      theme = "catppuccin-mocha";
+      theme = "Catppuccin Mocha";
       font-family = "JetBrainsMono Nerd Font";
       font-size = 13;
 
@@ -27,8 +27,8 @@
 
       keybind = [
         "ctrl+shift+t=new_tab"
-        "ctrl+shift+left=goto_tab:-1"
-        "ctrl+shift+right=goto_tab:+1"
+        "ctrl+shift+left=previous_tab"
+        "ctrl+shift+right=next_tab"
         "ctrl+shift+n=new_window"
         "ctrl+shift+enter=toggle_fullscreen"
       ];

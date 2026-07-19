@@ -24,7 +24,7 @@
       la = "ls -A";
       l = "ls -CF";
       update = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
-      cleanup = "sudo nix-collect-garbage --delete-older-than 14d";
+      cleanup = "sudo nix-collect-garbage -d";
       nixos-history = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
     };
 
