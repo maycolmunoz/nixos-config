@@ -6,35 +6,36 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 
 ```
 ├── flake.nix
-├── home-manager.nix      — home-manager module config
-├── hosts/nixos/          — host-specific (default.nix, hardware.nix)
-├── home/mmunoz/          — home-manager (zsh, gtk, dconf, cli tools)
+├── home-manager.nix          — home-manager module config
+├── hosts/nixos/              — host-specific (default.nix, hardware.nix)
+├── home/mmunoz/              — home-manager (zsh, git, gtk, ghostty, firefox, cli tools)
 └── modules/
-    ├── desktop/          — GNOME
-    ├── services/         — pipewire, flatpak, docker, libvirtd, printing, fwupd
-    └── system/           — locale, nix-settings, packages, users
+    ├── desktop/
+    │   └── gnome/            — gnome (default.nix, packages.nix, xserver.nix)
+    ├── services/             — pipewire, flatpak, docker, libvirtd, printing, fwupd, localsend
+    └── system/               — locale, nix-settings, packages, users, boot
 ```
 
 ## Usage
 
 ```bash
 # Rebuild
-sudo nixos-rebuild switch --flake /etc/nixos#nixos
+update
 
 # Update inputs
-nix flake update
+nix flake update && update
 
 # Garbage collect (automatic: weekly, >14 days)
-sudo nix-collect-garbage --delete-older-than 14d
+cleanup
 ```
 
 ## Notable packages
 
 | Source | Packages |
 |--------|----------|
-| stable | tree, wget, fastfetch, corefonts, lazygit, obsidian, obs-studio, onlyoffice |
+| stable | tree, wget, fastfetch, corefonts, lazygit, obsidian, obs-studio, onlyoffice, nixfmt |
 | unstable | vscode, opencode, brave |
-| home-manager | bat, btop, yazi, firefox, editorconfig, direnv |
+| home-manager | bat, btop, yazi, nerd-fonts.jetbrains-mono, firefox (module), ghostty (module) |
 
 ## Services
 
@@ -42,8 +43,9 @@ sudo nix-collect-garbage --delete-older-than 14d
 - PipeWire (audio, ALSA + PulseAudio compat)
 - CUPS (printing, IPP-USB)
 - Flatpak
-- Docker, libvirtd
+- Docker, libvirtd (+ Spice USB redirection)
 - fwupd
+- LocalSend
 
 ## System
 

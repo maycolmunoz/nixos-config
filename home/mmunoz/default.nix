@@ -7,6 +7,8 @@
 
   imports = [
     ./gnome.nix
+    ./gtk.nix
+    ./packages.nix
     ./zsh.nix
     ./cli.nix
     ./firefox.nix

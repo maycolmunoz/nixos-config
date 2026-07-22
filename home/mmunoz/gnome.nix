@@ -1,16 +1,17 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-{
+{ pkgs, ... }: {
+  programs.gnome-shell = {
+    enable = true;
+    extensions = [
+      { package = pkgs.gnomeExtensions.user-themes; }
+      { package = pkgs.gnomeExtensions.blur-my-shell; }
+      { package = pkgs.gnomeExtensions.clipboard-indicator; }
+      { package = pkgs.gnomeExtensions.caffeine; }
+      { package = pkgs.gnomeExtensions.tiling-shell; }
+    ];
+  };
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      gtk-theme = "Adwaita-dark";
-      cursor-theme = "Bibata-Modern-Classic";
-      cursor-size = 24;
-      icon-theme = "Papirus-Dark";
       monospace-font-name = "JetBrainsMono Nerd Font 12";
     };
 
@@ -38,15 +39,6 @@
       binding = "<Super>period";
       command = "gnome-characters";
       name = "Open Characters";
-    };
-
-    "org/gnome/shell" = {
-      enabled-extensions = [
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "blur-my-shell@aunetx"
-        "clipboard-indicator@tudmotu.com"
-        "caffeine@patapon.info"
-      ];
     };
 
     "org/gnome/shell/extensions/clipboard-indicator" = {
@@ -77,31 +69,6 @@
       switch-to-application-7 = [ ];
       switch-to-application-8 = [ ];
       switch-to-application-9 = [ ];
-    };
-  };
-
-  gtk = {
-    enable = true;
-
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
-    cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
-    };
-
-    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
     };
   };
 }

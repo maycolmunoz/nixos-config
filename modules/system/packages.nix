@@ -15,9 +15,6 @@
       obsidian
       obs-studio
       onlyoffice-desktopeditors
-      bat
-      btop
-      yazi
       nixfmt
     ]
     ++ (with pkgs-unstable; [

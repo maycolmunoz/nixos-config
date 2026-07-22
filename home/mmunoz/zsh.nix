@@ -27,6 +27,9 @@
       cleanup = "sudo nix-collect-garbage -d";
       nixos-history = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       format-nix = "sudo nixfmt $(find /etc/nixos -name '*.nix' -not -path '*/result/*' -not -path '*/.git/*')";
+      nix-edit = "code /etc/nixos";
+      nix-gc = "sudo nix-collect-garbage --delete-older-than 14d";
+      nix-update = "nix flake update /etc/nixos && update";
     };
 
     history = {
@@ -35,5 +38,10 @@
       ignoreDups = true;
       share = true;
     };
+
+    initExtra = ''
+      bindkey '^[[A' history-search-backward
+      bindkey '^[[B' history-search-forward
+    '';
   };
 }
