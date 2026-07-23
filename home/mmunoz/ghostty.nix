@@ -38,8 +38,8 @@
   xdg.terminal-exec = {
     enable = true;
     settings = {
-      default = [ "ghostty.desktop" ];
-      GNOME = [ "ghostty.desktop" ];
+      default = [ "com.mitchellh.ghostty.desktop" ];
+      GNOME = [ "com.mitchellh.ghostty.desktop" ];
     };
   };
 }
