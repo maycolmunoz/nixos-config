@@ -11,14 +11,9 @@
     ./packages.nix
     ./zsh.nix
     ./cli.nix
+    ./git.nix
     ./firefox.nix
     ./ghostty.nix
+    ./opencode.nix
   ];
-
-  programs.git = {
-    enable = true;
-    settings.user.name = "maycolmunoz";
-    settings.user.email = "estivenyeizon@gmail.com";
-    settings.init.defaultBranch = "main";
-  };
 }
