@@ -18,7 +18,7 @@
           moz = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
         in
         {
-          "google-translate@chromewebstore.google.com" = {
+          "{b5dd2040-96f6-4dc2-9a6e-58ea535eb175}" = {
             install_url = moz "google-translate";
             installation_mode = "normal_installed";
           };
