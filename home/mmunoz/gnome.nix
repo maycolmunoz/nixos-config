@@ -1,4 +1,9 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [
+    gnome-boxes
+    gnome-tweaks
+  ];
+
   programs.gnome-shell = {
     enable = true;
     extensions = [

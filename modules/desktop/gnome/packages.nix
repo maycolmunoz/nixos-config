@@ -10,9 +10,4 @@
     epiphany
     yelp
   ];
-
-  environment.systemPackages = with pkgs; [
-    gnome-boxes
-    gnome-tweaks
-  ];
 }
