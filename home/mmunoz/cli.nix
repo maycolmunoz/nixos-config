@@ -1,4 +1,23 @@
 { pkgs, ... }: {
+  programs.bat = {
+    enable = true;
+    config.theme = "Catppuccin Mocha";
+  };
+
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "catppuccin_mocha";
+      update_interval = 0; # Only updates on focus/resize to save CPU
+      vim_keys = true;
+    };
+  };
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   editorconfig = {
     enable = true;
     settings = {
@@ -8,9 +27,6 @@
         insert_final_newline = true;
         trim_trailing_whitespace = true;
         indent_style = "space";
-        indent_size = 2;
-      };
-      "*.nix" = {
         indent_size = 2;
       };
       "*.md" = {
