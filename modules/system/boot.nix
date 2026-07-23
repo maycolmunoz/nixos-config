@@ -3,6 +3,4 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.tmp.cleanOnBoot = true;
-
-  zramSwap.enable = true;
 }

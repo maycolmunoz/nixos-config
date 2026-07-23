@@ -27,6 +27,8 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
+          # Independent nixpkgs import needs its own allowUnfree
+          # (system-level nixpkgs.config doesn't apply here)
           pkgs-unstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;

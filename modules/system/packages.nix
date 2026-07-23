@@ -16,6 +16,7 @@
       obs-studio
       onlyoffice-desktopeditors
       nixfmt
+      mcp-nixos
     ]
     ++ (with pkgs-unstable; [
       vscode
