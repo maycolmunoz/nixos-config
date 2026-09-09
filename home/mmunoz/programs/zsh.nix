@@ -33,6 +33,7 @@
       nix-update = "nix flake update && update";
       sail = "[ -f sail ] && sh sail || sh vendor/bin/sail";
       search = "nix search nixpkgs";
+      nix-unfree = "NIXPKGS_ALLOW_UNFREE=1 nix profile add --impure";
       fmt = "nix fmt ${hostConfig.flakePath}";
     };
 
