@@ -24,6 +24,5 @@
     printing = true;
     flatpak = true;
     fwupd = true;
-    localsend = true;
   };
 }

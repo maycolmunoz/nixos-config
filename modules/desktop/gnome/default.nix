@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./xserver.nix ];
+  imports = [ ../xserver.nix ];
 
   environment.gnome.excludePackages = with pkgs; [
     gnome-software

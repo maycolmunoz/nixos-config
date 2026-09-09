@@ -1,4 +1,12 @@
 { ... }: {
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+      priority = -2;
+    }
+  ];
+
   zramSwap = {
     enable = true;
     algorithm = "zstd";

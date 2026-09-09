@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ./xserver.nix
+    ../xserver.nix
   ];
 
   services.desktopManager.cosmic.enable = true;

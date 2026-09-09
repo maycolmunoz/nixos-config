@@ -30,7 +30,6 @@
         specialArgs = {
           inherit inputs;
           inherit hostConfig;
-          desktop = hostConfig.desktop;
         };
         modules = [
           ./hosts/nixos/default.nix

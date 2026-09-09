@@ -1,5 +1,5 @@
-{ desktop, ... }: {
+{ hostConfig, ... }: {
   imports = [
-    (./. + "/${desktop}/default.nix")
+    (./. + "/${hostConfig.desktop}/default.nix")
   ];
 }
