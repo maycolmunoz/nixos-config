@@ -1,7 +1,7 @@
 { hostConfig, ... }: {
   home.username = hostConfig.username;
   home.homeDirectory = "/home/${hostConfig.username}";
-  home.stateVersion = "26.05";
+  home.stateVersion = hostConfig.stateVersion;
 
   programs.home-manager.enable = true;
 

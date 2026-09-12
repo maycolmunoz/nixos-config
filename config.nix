@@ -13,6 +13,7 @@
   consoleKeyMap = "la-latin1";
   xkbLayout = "latam";
   desktop = "gnome";
+  stateVersion = "26.05";
 
   # Flake path (used in zsh aliases)
   flakePath = "/etc/nixos";

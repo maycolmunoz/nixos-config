@@ -7,5 +7,5 @@
   networking.hostName = hostConfig.hostname;
   networking.networkmanager.enable = true;
 
-  system.stateVersion = "26.05";
+  system.stateVersion = hostConfig.stateVersion;
 }

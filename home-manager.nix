@@ -12,6 +12,6 @@
       inherit hostConfig;
     };
     backupFileExtension = "hm-backup";
-    users.${hostConfig.username} = import ./home/mmunoz;
+    users.${hostConfig.username} = import ./home/${hostConfig.username};
   };
 }
