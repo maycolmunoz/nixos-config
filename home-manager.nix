@@ -7,6 +7,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    sharedModules = [ inputs.nixvim.homeModules.nixvim ];
     extraSpecialArgs = {
       inherit inputs;
       inherit hostConfig;

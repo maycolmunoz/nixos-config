@@ -19,7 +19,7 @@
     ./programs/opencode
     ./programs/antigravity-cli
     ./programs/vscodium.nix
-    ./programs/neovim.nix
+    ./programs/neovim
     ./apps/apps.nix
   ];
 }

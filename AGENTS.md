@@ -17,7 +17,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | `home-manager.nix` | Home-manager module configuration (useGlobalPkgs, user imports) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager, organized in folders: `programs/` (zsh, git, firefox, ghostty, opencode, fastfetch, cli, dev, neovim, vscodium, antigravity-cli), `desktop/` (gnome, gtk, fonts, cosmic), `apps/` (gui apps) |
+| `home/mmunoz/` | Home-manager, organized in folders: `programs/` (zsh, git, firefox, ghostty, opencode, fastfetch, cli, dev, nvim, vscodium, antigravity-cli), `desktop/` (gnome, gtk, fonts, cosmic), `apps/` (gui apps) |
 | `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`) with system configs |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd), ydotool |
 | `modules/system/` | boot, locale, nix-settings, users; system packages live in `home/mmunoz/` |
@@ -30,6 +30,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 - **Desktop structure**: Each desktop has its own dir under `modules/desktop/` with `default.nix` (system) plus shared `xserver.nix`; its home-manager config lives in `home/mmunoz/desktop/{name}.nix`.
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
 - **Home-manager CLI tools**: User CLI tools with Home Manager modules (bat, btop, yazi, editorconfig, direnv) plus standalone CLI pkgs and terminal toys are in `home/mmunoz/programs/cli.nix`. GUI apps live in `home/mmunoz/apps/apps.nix`, dev tooling in `home/mmunoz/programs/dev.nix`.
+- **Neovim (nixvim)**: `programs.nixvim` via `home/mmunoz/programs/neovim/` — `default.nix` (opts/keymaps/colorscheme) + `plugins/` one module per area (`base`, `editor`, `search`, `cmp`, `lsp`, `git`). Enable nixvim with `nixvim.homeManagerModules.nixvim` in `home-manager.nix` `sharedModules`. To add a feature, add a module to `plugins/` and to the imports in `default.nix`. LSP servers: `plugins.lsp.servers.*.enable`. Docs: `nix search nixvim` options or the nixvim wiki.
 - **Theme**: GTK/icon/cursor theme is set once in `home/mmunoz/desktop/gtk.nix`; `desktop/gnome.nix` dconf only sets desktop-specific keys.
 
 ## Commands
