@@ -7,7 +7,6 @@
 
   imports = [
     (./desktop + "/${hostConfig.desktop}.nix")
-    ./desktop/gtk.nix
     ./desktop/fonts.nix
     ./programs/zsh.nix
     ./programs/fastfetch

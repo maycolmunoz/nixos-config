@@ -42,7 +42,7 @@
       isDefault = true;
 
       extensions = {
-        packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+        packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
           ublock-origin
           foxyproxy-standard
           cookie-editor

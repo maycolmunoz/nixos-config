@@ -2,7 +2,7 @@
 let
   # ponytail: local pkgs import with allowUnfree; HM pkgs (useGlobalPkgs) ignores nixpkgs.config here
   allowedPkgs = import pkgs.path {
-    system = pkgs.system;
+    system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
 in
