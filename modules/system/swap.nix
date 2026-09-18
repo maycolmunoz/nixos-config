@@ -2,7 +2,7 @@
   swapDevices = [
     {
       device = "/var/lib/swapfile";
-      size = 16 * 1024;
+      size = 4 * 1024;
       priority = -2;
     }
   ];

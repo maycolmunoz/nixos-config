@@ -12,9 +12,6 @@
         "git"
         "sudo"
         "docker"
-        "npm"
-        "node"
-        "composer"
         "extract"
         "z"
         "copypath"
@@ -24,10 +21,10 @@
     };
 
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake ${hostConfig.flakePath}#${hostConfig.flakeConfig}";
-      test = "sudo nixos-rebuild test --flake ${hostConfig.flakePath}#${hostConfig.flakeConfig}";
-      diff = "nixos-rebuild dry-activate --flake ${hostConfig.flakePath}#${hostConfig.flakeConfig}";
-      nix-gc = "sudo nix-collect-garbage -d";
+      update = "nh os switch";
+      test = "nh os test";
+      diff = "nh os build";
+      nix-gc = "nh clean all --keep 5";
       nix-history = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       nix-edit = "codium ${hostConfig.flakePath}";
       nix-update = "nix flake update && update";

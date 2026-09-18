@@ -20,7 +20,6 @@
       mouse-hide-while-typing = true;
 
       copy-on-select = "clipboard";
-      clipboard-paste-protection = false;
 
       scrollback-limit = 50000;
       confirm-close-surface = false;

@@ -1,16 +1,33 @@
-{ pkgs, ... }: {
+{ pkgs, hostConfig, ... }: {
   home.packages = with pkgs; [
     tree
     wget
     television
     nixfmt
     distrobox
-    zoxide
     mcp-nixos
-    gh
     officecli
     codegraph
+    fd
+    ripgrep
   ];
+
+  programs.nh = {
+    enable = true;
+    flake = hostConfig.flakePath;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.gh.enable = true;
 
   programs.bat = {
     enable = true;
@@ -19,7 +36,6 @@
   programs.btop = {
     enable = true;
     settings = {
-      update_interval = 0; # Only updates on focus/resize to save CPU
       vim_keys = true;
     };
   };

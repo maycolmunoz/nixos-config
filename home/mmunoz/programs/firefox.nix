@@ -116,7 +116,7 @@
 
       settings = {
         "browser.startup.homepage" = "about:blank";
-        "browser.search.separatePrivateDefault" = false;
+        "browser.search.separatePrivateDefault" = true;
         "browser.toolbars.bookmarks.visibility" = "always";
         "browser.sessionstore.resume_session_once" = true;
         "privacy.donottrackheader.enabled" = true;

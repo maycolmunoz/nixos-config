@@ -2,7 +2,6 @@
   imports = [ ./gtk.nix ];
 
   home.packages = with pkgs; [
-    gnome-boxes
     gnome-tweaks
   ];
 

@@ -3,6 +3,7 @@
     ./desktop/default.nix
     ./services/pipewire.nix
     ./services/ydotool.nix
+    ./services/fstrim.nix
     ./system/appimage.nix
     ./system/boot.nix
     ./system/locale.nix
