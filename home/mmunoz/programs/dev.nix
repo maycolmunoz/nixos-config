@@ -17,7 +17,6 @@
 
     nodejs_24
     pnpm
-    yarn
 
     lazydocker
     lazygit

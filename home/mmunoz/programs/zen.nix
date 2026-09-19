@@ -4,7 +4,7 @@
   ...
 }:
 {
-  programs.firefox = {
+  programs.zen-browser = {
     enable = true;
 
     policies = {
@@ -18,20 +18,16 @@
           moz = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
         in
         {
-          "{b5dd2040-96f6-4dc2-9a6e-58ea535eb175}" = {
-            install_url = moz "google-translate";
-            installation_mode = "normal_installed";
-          };
           "{e369192d-43df-486e-aca0-d771eaed541d}" = {
             install_url = moz "firefox-hackbar";
             installation_mode = "force_installed";
           };
-          "rexxargupta@gmail.com" = {
-            install_url = moz "trufflehog";
-            installation_mode = "force_installed";
-          };
           "wappalyzer@crunchlabz.com" = {
             install_url = moz "wappalyzer";
+            installation_mode = "force_installed";
+          };
+          "rexxargupta@gmail.com" = {
+            install_url = moz "trufflehog";
             installation_mode = "force_installed";
           };
         };
@@ -46,6 +42,7 @@
           ublock-origin
           foxyproxy-standard
           cookie-editor
+          to-google-translate
         ];
         force = true;
         settings = {

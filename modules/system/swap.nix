@@ -1,11 +1,5 @@
 { ... }: {
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 4 * 1024;
-      priority = -2;
-    }
-  ];
+  swapDevices = [ ];
 
   zramSwap = {
     enable = true;
@@ -15,7 +9,7 @@
   };
 
   boot.kernel.sysctl = {
-    "vm.swappiness" = 10;
+    "vm.swappiness" = 100;
     "vm.vfs_cache_pressure" = 50;
   };
 

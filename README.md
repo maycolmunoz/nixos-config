@@ -10,13 +10,12 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 ├── home-manager.nix          — home-manager module config
 ├── hosts/nixos/              — host-specific (default.nix, hardware.nix)
 ├── home/mmunoz/              — home-manager
-│   ├── programs/             — zsh, git, firefox, ghostty, vscodium, opencode, fastfetch, cli, dev
-│   ├── desktop/              — gnome, gtk, fonts, cosmic
-│   └── apps/                 — gui apps
+│   ├── programs/             — zsh, starship, git, zen, ghostty, vscodium, opencode, fastfetch, cli, dev, apps
+│   └── desktop/              — gnome, gtk, fonts, cosmic
 └── modules/
     ├── default.nix           — central importer (uses feature flags)
     ├── desktop/              — desktop selection + per-desktop dirs (gnome/, cosmic/)
-    ├── services/             — pipewire, ydotool, printing, flatpak, fwupd, virtualisation
+    ├── services/             — pipewire, ydotool, printing, flatpak, fwupd, virtualisation, fstrim
     └── system/               — boot, locale, nix-settings, users, swap, appimage
 ```
 
@@ -38,9 +37,9 @@ cleanup
 - GNOME (GDM) desktop
 - PipeWire (audio, ALSA + PulseAudio compat)
 - CUPS (printing, IPP-USB)
-- Flatpak
 - Virtualisation (Docker + libvirtd + Spice USB)
 - fwupd
+- fstrim, zram, ydotool
 
 ## System
 
@@ -48,4 +47,4 @@ cleanup
 - **Boot:** systemd-boot (EFI)
 - **Locale:** en_US.UTF-8 / es_CO.UTF-8 (Colombia)
 - **Timezone:** America/Bogota
-- **Shell:** Zsh (oh-my-zsh, agnoster)
+- **Shell:** Zsh + starship

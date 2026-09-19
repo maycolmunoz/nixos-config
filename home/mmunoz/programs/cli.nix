@@ -2,7 +2,6 @@
   home.packages = with pkgs; [
     tree
     wget
-    television
     nixfmt
     distrobox
     mcp-nixos

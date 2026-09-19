@@ -9,7 +9,7 @@
     profiles.default = {
       userSettings = {
         # Theme & UI
-        "workbench.colorTheme" = "Ayu Mirage";
+        "workbench.colorTheme" = "Catppuccin Mocha";
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.startupEditor" = "none";
         "workbench.activityBar.location" = "top";
@@ -75,7 +75,7 @@
       extensions =
         with pkgs.vscode-extensions;
         [
-          teabyii.ayu
+          catppuccin.catppuccin-vsc
           dbaeumer.vscode-eslint
           pkief.material-icon-theme
           bmewburn.vscode-intelephense-client

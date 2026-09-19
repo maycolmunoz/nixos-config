@@ -5,21 +5,6 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
 
-    oh-my-zsh = {
-      enable = true;
-      theme = "agnoster";
-      plugins = [
-        "git"
-        "sudo"
-        "docker"
-        "extract"
-        "z"
-        "copypath"
-        "copyfile"
-        "web-search"
-      ];
-    };
-
     shellAliases = {
       update = "nh os switch";
       test = "nh os test";
@@ -42,7 +27,7 @@
     };
 
     initContent = ''
-      # Arrow key history search (after oh-my-zsh init)
+      # Arrow key history search
       bindkey '^[[A' history-search-backward
       bindkey '^[[B' history-search-forward
     '';

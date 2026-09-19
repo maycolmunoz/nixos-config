@@ -21,6 +21,10 @@
       monospace-font-name = "JetBrainsMono Nerd Font 12";
     };
 
+    "org/gnome/desktop/wm/preferences" = {
+      "button-layout" = ":close";
+    };
+
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"

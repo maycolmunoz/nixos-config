@@ -23,7 +23,7 @@
   features = {
     virtualisation = true;
     printing = true;
-    flatpak = true;
+    flatpak = false;
     fwupd = true;
   };
 }
