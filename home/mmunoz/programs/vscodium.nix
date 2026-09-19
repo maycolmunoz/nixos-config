@@ -7,6 +7,8 @@
     enable = true;
 
     profiles.default = {
+      mutableUserSettings = true;
+
       userSettings = {
         # Theme & UI
         "workbench.colorTheme" = "Catppuccin Mocha";
@@ -71,6 +73,37 @@
         "terminal.integrated.defaultProfile.linux" = "zsh";
         "workbench.panel.defaultLocation" = "right";
       };
+
+      keybindings = [
+        {
+          key = "ctrl+alt+t";
+          command = "workbench.action.terminal.toggleTerminal";
+        }
+        {
+          key = "ctrl+alt+n";
+          command = "workbench.action.terminal.new";
+        }
+        {
+          key = "ctrl+alt+k";
+          command = "workbench.action.terminal.kill";
+          when = "terminalFocus";
+        }
+        {
+          key = "ctrl+alt+j";
+          command = "workbench.action.terminal.focusPrevious";
+          when = "terminalFocus";
+        }
+        {
+          key = "ctrl+alt+l";
+          command = "workbench.action.terminal.focusNext";
+          when = "terminalFocus";
+        }
+        {
+          key = "ctrl+alt+e";
+          command = "workbench.action.focusActiveEditorGroup";
+          when = "terminalFocus";
+        }
+      ];
 
       extensions =
         with pkgs.vscode-extensions;
