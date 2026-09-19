@@ -13,11 +13,11 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | Path | Purpose |
 |------|---------|
 | `config.nix` | **Single source of truth**: username, email, hostname, locale, desktop, flake paths, feature flags |
-| `flake.nix` | Entry point; imports `config.nix`, pins nixpkgs (nixos-unstable) + home-manager (master) + firefox-addons + nixvim |
+| `flake.nix` | Entry point; imports `config.nix`, pins nixpkgs (nixos-unstable) + home-manager (master) + firefox-addons |
 | `home-manager.nix` | Home-manager module configuration (useGlobalPkgs, user imports) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager, organized in folders: `programs/` (zsh, git, firefox, ghostty, opencode, fastfetch, cli, dev, nvim, vscodium, antigravity-cli), `desktop/` (gnome, gtk, fonts, cosmic), `apps/` (gui apps) |
+| `home/mmunoz/` | Home-manager, organized in folders: `programs/` (zsh, git, firefox, ghostty, opencode, fastfetch, cli, dev, vscodium, antigravity-cli), `desktop/` (gnome, gtk, fonts, cosmic), `apps/` (gui apps) |
 | `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`) with system configs |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd), ydotool |
 | `modules/system/` | boot, locale, nix-settings, users, swap, appimage; system packages live in `home/mmunoz/` |
@@ -30,7 +30,6 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 - **Desktop structure**: Each desktop has its own dir under `modules/desktop/` with `default.nix` (system) plus shared `xserver.nix`; its home-manager config lives in `home/mmunoz/desktop/{name}.nix`.
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
 - **Home-manager CLI tools**: User CLI tools with Home Manager modules (bat, btop, yazi, editorconfig, direnv) plus standalone CLI pkgs and terminal toys are in `home/mmunoz/programs/cli.nix`. GUI apps live in `home/mmunoz/apps/apps.nix`, dev tooling in `home/mmunoz/programs/dev.nix`.
-- **Neovim (nixvim)**: `programs.nixvim` via `home/mmunoz/programs/neovim/` — `default.nix` (opts/keymaps/colorscheme) + `plugins/` one module per area (`base`, `editor`, `search`, `cmp`, `lsp`, `git`). Enable nixvim with `nixvim.homeManagerModules.nixvim` in `home-manager.nix` `sharedModules`. To add a feature, add a module to `plugins/` and to the imports in `default.nix`. LSP servers: `plugins.lsp.servers.*.enable`. Docs: `nix search nixvim` options or the nixvim wiki.
 - **Theme**: each desktop's `home/mmunoz/desktop/{name}.nix` imports the shared `home/mmunoz/desktop/gtk.nix` (GTK/icon/cursor theme); `desktop/gnome.nix` dconf only sets desktop-specific keys. `desktop/fonts.nix` stays global (imported in `home/mmunoz/default.nix`).
 
 ## Commands
@@ -51,7 +50,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 
 - All Nix files use `{ ... }: { }` style with trailing semicolons.
 - One module per file under `modules/{desktop,services,system}/`.
-- Home programs are a single `<name>.nix` file; use `<name>/default.nix` dir only when the program needs multiple files (e.g. `neovim/`, `opencode/`).
+- Home programs are a single `<name>.nix` file; use `<name>/default.nix` dir only when the program needs multiple files (e.g. `opencode/`).
 - User tools with Home Manager modules go in `home/mmunoz/programs/cli.nix`.
 - Commit via conventional commits: `feat|fix|refactor|chore(scope): message`.
 

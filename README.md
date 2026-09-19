@@ -10,7 +10,7 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 ├── home-manager.nix          — home-manager module config
 ├── hosts/nixos/              — host-specific (default.nix, hardware.nix)
 ├── home/mmunoz/              — home-manager
-│   ├── programs/             — zsh, git, firefox, ghostty, neovim, vscodium, opencode, fastfetch, cli, dev
+│   ├── programs/             — zsh, git, firefox, ghostty, vscodium, opencode, fastfetch, cli, dev
 │   ├── desktop/              — gnome, gtk, fonts, cosmic
 │   └── apps/                 — gui apps
 └── modules/
