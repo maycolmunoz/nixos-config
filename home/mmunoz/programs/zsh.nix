@@ -1,4 +1,4 @@
-{ hostConfig, ... }: {
+{ hostConfig, pkgs, ... }: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -30,6 +30,11 @@
       # Arrow key history search
       bindkey '^[[A' history-search-backward
       bindkey '^[[B' history-search-forward
+    '';
+
+    initExtra = ''
+      export PATH="$HOME/.local/bin:$PATH"
+      export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib"
     '';
   };
 }

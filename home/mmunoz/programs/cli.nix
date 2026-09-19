@@ -1,4 +1,6 @@
 { pkgs, hostConfig, ... }: {
+  home.sessionPath = [ "$HOME/.local/bin" ];
+
   home.packages = with pkgs; [
     tree
     wget
@@ -9,6 +11,7 @@
     codegraph
     fd
     ripgrep
+    python3
   ];
 
   programs.nh = {
@@ -68,5 +71,12 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  programs.uv = {
+    enable = true;
+    settings = {
+      "python-preference" = "only-system";
+    };
   };
 }
