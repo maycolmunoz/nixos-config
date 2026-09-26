@@ -1,6 +1,8 @@
 { hostConfig, pkgs, ... }: {
   programs.zsh = {
     enable = true;
+    oh-my-zsh.enable = true;
+    oh-my-zsh.theme = "robbyrussell";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
@@ -27,14 +29,12 @@
     };
 
     initContent = ''
+      export PATH="$HOME/.local/bin:$PATH"
+      export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib"
+
       # Arrow key history search
       bindkey '^[[A' history-search-backward
       bindkey '^[[B' history-search-forward
-    '';
-
-    initExtra = ''
-      export PATH="$HOME/.local/bin:$PATH"
-      export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib"
     '';
   };
 }

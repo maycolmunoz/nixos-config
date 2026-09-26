@@ -10,7 +10,7 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 ├── home-manager.nix          — home-manager module config
 ├── hosts/nixos/              — host-specific (default.nix, hardware.nix)
 ├── home/mmunoz/              — home-manager
-│   ├── programs/             — zsh, starship, git, zen, ghostty, vscodium, opencode, fastfetch, cli, dev, apps
+│   ├── programs/             — zsh, git, zen, ghostty, vscodium, opencode, fastfetch, cli, dev, apps
 │   └── desktop/              — gnome, gtk, fonts, cosmic
 └── modules/
     ├── default.nix           — central importer (uses feature flags)
@@ -47,4 +47,4 @@ cleanup
 - **Boot:** systemd-boot (EFI)
 - **Locale:** en_US.UTF-8 / es_CO.UTF-8 (Colombia)
 - **Timezone:** America/Bogota
-- **Shell:** Zsh + starship
+- **Shell:** Zsh + oh-my-zsh (robbyrussell)

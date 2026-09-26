@@ -10,7 +10,6 @@
     (./desktop + "/${hostConfig.desktop}.nix")
     ./desktop/fonts.nix
     ./programs/zsh.nix
-    ./programs/starship.nix
     ./programs/fastfetch
     ./programs/cli.nix
     ./programs/dev.nix
