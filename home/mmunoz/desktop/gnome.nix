@@ -19,6 +19,7 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       monospace-font-name = "JetBrainsMono Nerd Font 12";
+      "show-battery-percentage" = true;
     };
 
     "org/gnome/desktop/wm/preferences" = {
@@ -60,6 +61,12 @@
 
     "org/gnome/shell/extensions/clipboard-indicator" = {
       toggle-menu = [ "<Super>v" ];
+      "history-size" = 20;
+    };
+
+    "org/gnome/shell/extensions/caffeine" = {
+      "user-enabled" = true;
+      "restore-state" = true;
     };
 
     "org/gnome/desktop/wm/keybindings" = {
