@@ -22,6 +22,10 @@
       "show-battery-percentage" = true;
     };
 
+    "org/gnome/desktop/peripherals/touchpad" = {
+      disable-while-typing = false;
+    };
+
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":close";
     };
