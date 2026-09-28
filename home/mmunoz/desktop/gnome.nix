@@ -1,10 +1,6 @@
 { pkgs, ... }: {
   imports = [ ./gtk.nix ];
 
-  home.packages = with pkgs; [
-    gnome-tweaks
-  ];
-
   programs.gnome-shell = {
     enable = true;
     extensions = [
@@ -12,6 +8,8 @@
       { package = pkgs.gnomeExtensions.clipboard-indicator; }
       { package = pkgs.gnomeExtensions.caffeine; }
       { package = pkgs.gnomeExtensions.tiling-shell; }
+      { package = pkgs.gnomeExtensions.focus-timer; }
+      { package = pkgs.gnomeExtensions.workspaces-indicator-by-open-apps; }
     ];
   };
 
