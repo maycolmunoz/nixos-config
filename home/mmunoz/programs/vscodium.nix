@@ -71,7 +71,30 @@
 
         # Terminal
         "terminal.integrated.defaultProfile.linux" = "zsh";
-        "workbench.panel.defaultLocation" = "right";
+        "terminal.integrated.automationProfile.linux" = {
+          path = "/bin/zsh";
+        };
+        "terminal.integrated.confirmOnExit" = "hasChildProcesses";
+        "terminal.integrated.copyOnSelection" = true;
+        "terminal.integrated.scrollback" = 10000;
+        "terminal.integrated.showExitAlert" = false;
+        "terminal.integrated.decorations.enabled" = false;
+        "terminal.integrated.gpuAcceleration" = "on";
+        "terminal.integrated.tabs.title" = "\${process} - \${cwdFolder}";
+        "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
+        "terminal.integrated.fontSize" = 13;
+        "terminal.integrated.lineHeight" = 1.1;
+        "terminal.integrated.cursorStyle" = "line";
+        "terminal.integrated.cursorBlinking" = true;
+        "terminal.integrated.smoothScrolling" = true;
+        "terminal.integrated.minimumContrastRatio" = 1;
+
+        # Panel
+        "workbench.panel.defaultLocation" = "left";
+        "workbench.panel.opensMaximized" = "always";
+        "problems.autoReveal" = false;
+        "debug.console.closeOnEnd" = true;
+        "workbench.list.smoothScrolling" = true;
       };
 
       keybindings = [
@@ -102,6 +125,10 @@
           key = "ctrl+alt+e";
           command = "workbench.action.focusActiveEditorGroup";
           when = "terminalFocus";
+        }
+        {
+          key = "ctrl+alt+m";
+          command = "workbench.action.toggleMaximizedPanel";
         }
       ];
 
