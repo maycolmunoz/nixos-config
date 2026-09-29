@@ -29,7 +29,10 @@
     enableZshIntegration = true;
   };
 
-  programs.gh.enable = true;
+  programs.gh = {
+    enable = true;
+    settings.git_protocol = "ssh";
+  };
 
   programs.bat = {
     enable = true;

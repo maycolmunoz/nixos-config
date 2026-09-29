@@ -14,6 +14,7 @@
     ./programs/cli.nix
     ./programs/dev.nix
     ./programs/git.nix
+    ./programs/ssh.nix
     ./programs/zen.nix
     ./programs/ghostty.nix
     ./programs/opencode
