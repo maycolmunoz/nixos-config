@@ -11,7 +11,7 @@
     codegraph
     fd
     ripgrep
-    python3
+    yoinks
   ];
 
   programs.nh = {

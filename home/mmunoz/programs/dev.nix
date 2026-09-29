@@ -13,6 +13,8 @@
   ];
 
   home.packages = with pkgs; [
+    python3
+
     php84Packages.composer
 
     nodejs_24
