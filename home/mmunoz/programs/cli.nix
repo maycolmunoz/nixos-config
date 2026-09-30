@@ -2,6 +2,7 @@
   home.sessionPath = [ "$HOME/.local/bin" ];
 
   home.packages = with pkgs; [
+    ffmpeg
     tree
     wget
     nixfmt
