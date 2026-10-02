@@ -9,5 +9,6 @@
     onlyoffice-desktopeditors
     brave
     handy
+    gnome-boxes
   ];
 }
