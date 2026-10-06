@@ -13,7 +13,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | Path | Purpose |
 |------|---------|
 | `config.nix` | **Single source of truth**: username, email, hostname, locale, desktop, flake paths, feature flags |
-| `flake.nix` | Entry point; imports `config.nix`, pins nixpkgs (nixos-unstable) + home-manager (master) + firefox-addons + zen-browser |
+| `flake.nix` | Entry point; imports `config.nix`, pins nixpkgs (nixos-unstable) + home-manager (master) + zen-browser |
 | `home-manager.nix` | Home-manager module config (`useGlobalPkgs`, user import, `backupFileExtension = "hm-backup"`) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
