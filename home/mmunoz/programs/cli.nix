@@ -6,7 +6,6 @@
     tree
     wget
     nixfmt
-    distrobox
     mcp-nixos
     officecli
     codegraph
