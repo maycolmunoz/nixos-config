@@ -14,10 +14,10 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 |------|---------|
 | `config.nix` | **Single source of truth**: username, email, hostname, locale, desktop, flake paths, feature flags |
 | `flake.nix` | Entry point; imports `config.nix`, pins nixpkgs (nixos-unstable) + home-manager (master) + zen-browser |
-| `home-manager.nix` | Home-manager module config (`useGlobalPkgs`, user import, `backupFileExtension = "hm-backup"`) |
+| `home-manager.nix` | Home-manager module config (`useGlobalPkgs`, `useUserPackages`, user import, `backupFileExtension = "hm-backup"`) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager: `programs/` (zsh, git, zen, ghostty, opencode/, fastfetch/, cli, dev, vscodium, apps), `desktop/` (gnome, gtk, fonts, cosmic) |
+| `home/mmunoz/` | Home-manager: `programs/` (zsh, git, ssh, zen, ghostty, opencode/, fastfetch/, cli, dev, vscodium, apps), `desktop/` (gnome, gtk, fonts, cosmic) |
 | `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`, `cosmic/`) + shared `xserver.nix` |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd), ydotool, fstrim |
 | `modules/system/` | boot, locale, nix-settings, users, swap, appimage |
@@ -25,20 +25,24 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 ## Notable patterns
 
 - **Centralized config**: `config.nix` values reach every module (system + home) as `hostConfig` via `specialArgs`/`extraSpecialArgs`. Read `config.nix` before hardcoding user/host paths.
-- **Feature flags**: `config.nix` → `features.*` controls which services are imported in `modules/default.nix`. Toggle services per host without touching module files.
+- **Feature flags**: `config.nix` → `features.*` controls which services are imported in `modules/default.nix`. The four flags are `virtualisation`, `printing`, `flatpak`, `fwupd` (`flatpak` is currently `false`). A flag gates **two** places: the module import in `modules/default.nix` *and* the user groups in `system/users.nix` (`lib.optionals hostConfig.features.virtualisation`).
 - **Desktop selection**: `modules/desktop/default.nix` imports the active desktop. To switch, change `desktop` in `config.nix` and add the file under `home/mmunoz/desktop/`.
 - **Theme**: each `home/mmunoz/desktop/{name}.nix` imports shared `desktop/gtk.nix` (GTK/icon/cursor); `desktop/gnome.nix` dconf only sets desktop-specific keys. `desktop/fonts.nix` stays global.
 - **GNOME settings**: declare them in `gnome.nix` `dconf.settings` so home-manager enforces them on rebuild. Quote dashed keys: `"button-layout" = ":close";` (bare `button-layout` parses as subtraction).
-- **Prompt**: oh-my-zsh `robbyrussell` (su default) vía `programs.zsh.oh-my-zsh` en `zsh.nix`. No starship.
+- **Prompt**: oh-my-zsh `robbyrussell` (the su default) via `programs.zsh.oh-my-zsh` in `zsh.nix`. No starship.
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
 - **Home programs** are a single `<name>.nix` file; use `<name>/default.nix` dir only when the program needs multiple files (e.g. `opencode/`). CLI tools with HM modules live in `programs/cli.nix`, GUI apps in `programs/apps.nix`, dev tooling in `programs/dev.nix`.
+- **Flake-input HM modules**: `home/mmunoz/default.nix` imports `inputs.zen-browser.homeModules.beta` directly; `programs/zen.nix` only flips `enable = true`. Any new flake-input module is imported in `home/mmunoz/default.nix`, never inside the program's own `default.nix`.
+- **`home.activation` hooks**: `programs/ssh.nix` and `desktop/fonts.nix` both use `lib.hm.dag.entryAfter [ "writeBoundary" ]` for work that must touch files outside the store (idempotent keygen, font linking + `fc-cache`). `entryAfter "writeBoundary"` is what makes them safe to re-run on every activation. Reuse this pattern for anything similar.
 
 ## Commands
 
 - `update` (alias in zsh.nix) → rebuild + switch. `test` (`nh os test`) → safe trial activation. `diff` (`nh os build`) → build without activating.
+- `nix-gc` (alias) → `nh clean all --keep 5` (also runs weekly automatically via `system/nix-settings.nix`).
+- `nix-history` (alias) → list system generations. `nix-edit` (alias) → open the flake in Codium.
+- `nix-update` (alias) → `nix flake update` then `update`. `fmt` (alias) → `nix fmt /etc/nixos`.
 - `nix fmt [<file>]` — format all (or one) Nix file(s). Formatter is `nixfmt-tree`.
 - `nix flake update` — update all inputs.
-- `cleanup` (alias) → `nh clean` GC (also runs weekly automatically).
 
 ## Verify
 

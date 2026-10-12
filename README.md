@@ -10,7 +10,7 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 ├── home-manager.nix          — home-manager module config
 ├── hosts/nixos/              — host-specific (default.nix, hardware.nix)
 ├── home/mmunoz/              — home-manager
-│   ├── programs/             — zsh, git, zen, ghostty, vscodium, opencode, fastfetch, cli, dev, apps
+│   ├── programs/             — zsh, git, ssh, zen, ghostty, vscodium, opencode, fastfetch, cli, dev, apps
 │   └── desktop/              — gnome, gtk, fonts, cosmic
 └── modules/
     ├── default.nix           — central importer (uses feature flags)
@@ -21,15 +21,30 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 
 ## Usage
 
+All shell aliases live in `home/mmunoz/programs/zsh.nix`:
+
+| Alias | Action |
+|---|---|
+| `update` | `nh os switch` — rebuild + activate |
+| `test` | `nh os test` — trial activation |
+| `diff` | `nh os build` — build without activating |
+| `nix-gc` | `nh clean all --keep 5` (also automatic: weekly, >14d) |
+| `nix-history` | list system generations |
+| `nix-edit` | open the flake in Codium |
+| `nix-update` | `nix flake update` then `update` |
+| `fmt` | `nix fmt /etc/nixos` |
+
+Manual equivalents:
+
 ```bash
 # Rebuild
-update
+sudo nixos-rebuild switch --flake /etc/nixos#nixos
 
-# Update inputs
-nix flake update && update
+# Update flake inputs
+nix flake update
 
-# Garbage collect (automatic: weekly, >14 days)
-cleanup
+# Garbage collect
+nh clean all --keep 5
 ```
 
 ## Services
