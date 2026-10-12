@@ -13,11 +13,11 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | Path | Purpose |
 |------|---------|
 | `config.nix` | **Single source of truth**: username, email, hostname, locale, desktop, flake paths, feature flags |
-| `flake.nix` | Entry point; imports `config.nix`, pins nixpkgs (nixos-unstable) + home-manager (master) + zen-browser |
+| `flake.nix` | Entry point; imports `config.nix`, pins nixpkgs (nixos-unstable) + home-manager (master) |
 | `home-manager.nix` | Home-manager module config (`useGlobalPkgs`, `useUserPackages`, user import, `backupFileExtension = "hm-backup"`) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager: `programs/` (zsh, git, ssh, zen, ghostty, opencode/, fastfetch/, cli, dev, vscodium, apps), `desktop/` (gnome, gtk, fonts, cosmic) |
+| `home/mmunoz/` | Home-manager: `programs/` (zsh, git, ssh, ghostty, opencode/, fastfetch/, cli, dev, vscodium, apps), `desktop/` (gnome, gtk, fonts, cosmic) |
 | `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`, `cosmic/`) + shared `xserver.nix` |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd), ydotool, fstrim |
 | `modules/system/` | boot, locale, nix-settings, users, swap, appimage |
@@ -32,7 +32,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 - **Prompt**: oh-my-zsh `robbyrussell` (the su default) via `programs.zsh.oh-my-zsh` in `zsh.nix`. No starship.
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
 - **Home programs** are a single `<name>.nix` file; use `<name>/default.nix` dir only when the program needs multiple files (e.g. `opencode/`). CLI tools with HM modules live in `programs/cli.nix`, GUI apps in `programs/apps.nix`, dev tooling in `programs/dev.nix`.
-- **Flake-input HM modules**: `home/mmunoz/default.nix` imports `inputs.zen-browser.homeModules.beta` directly; `programs/zen.nix` only flips `enable = true`. Any new flake-input module is imported in `home/mmunoz/default.nix`, never inside the program's own `default.nix`.
+- **Flake-input HM modules**: import them directly in `home/mmunoz/default.nix`, never inside the program's own `default.nix`.
 - **`home.activation` hooks**: `programs/ssh.nix` and `desktop/fonts.nix` both use `lib.hm.dag.entryAfter [ "writeBoundary" ]` for work that must touch files outside the store (idempotent keygen, font linking + `fc-cache`). `entryAfter "writeBoundary"` is what makes them safe to re-run on every activation. Reuse this pattern for anything similar.
 
 ## Commands

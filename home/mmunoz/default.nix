@@ -6,7 +6,6 @@
   programs.home-manager.enable = true;
 
   imports = [
-    inputs.zen-browser.homeModules.beta
     (./desktop + "/${hostConfig.desktop}.nix")
     ./desktop/fonts.nix
     ./programs/zsh.nix
@@ -15,7 +14,6 @@
     ./programs/dev.nix
     ./programs/git.nix
     ./programs/ssh.nix
-    ./programs/zen.nix
     ./programs/ghostty.nix
     ./programs/opencode
     ./programs/vscodium.nix

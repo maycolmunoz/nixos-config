@@ -4,6 +4,7 @@
 }:
 {
   home.packages = with pkgs; [
+    firefox
     obsidian
     obs-studio
     onlyoffice-desktopeditors
