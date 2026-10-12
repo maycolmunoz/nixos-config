@@ -11,10 +11,10 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 ├── hosts/nixos/              — host-specific (default.nix, hardware.nix)
 ├── home/mmunoz/              — home-manager
 │   ├── programs/             — zsh, git, ssh, ghostty, vscodium, opencode, fastfetch, cli, dev, apps
-│   └── desktop/              — gnome, gtk, fonts, cosmic
+│   └── desktop/              — gnome, gtk, fonts
 └── modules/
     ├── default.nix           — central importer (uses feature flags)
-    ├── desktop/              — desktop selection + per-desktop dirs (gnome/, cosmic/)
+    ├── desktop/              — desktop selection + per-desktop dirs (gnome/)
     ├── services/             — pipewire, ydotool, printing, flatpak, fwupd, virtualisation, fstrim
     └── system/               — boot, locale, nix-settings, users, swap, appimage
 ```

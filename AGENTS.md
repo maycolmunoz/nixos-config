@@ -17,8 +17,8 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | `home-manager.nix` | Home-manager module config (`useGlobalPkgs`, `useUserPackages`, user import, `backupFileExtension = "hm-backup"`) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager: `programs/` (zsh, git, ssh, ghostty, opencode/, fastfetch/, cli, dev, vscodium, apps), `desktop/` (gnome, gtk, fonts, cosmic) |
-| `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`, `cosmic/`) + shared `xserver.nix` |
+| `home/mmunoz/` | Home-manager: `programs/` (zsh, git, ssh, ghostty, opencode/, fastfetch/, cli, dev, vscodium, apps), `desktop/` (gnome, gtk, fonts) |
+| `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`) + shared `xserver.nix` |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd), ydotool, fstrim |
 | `modules/system/` | boot, locale, nix-settings, users, swap, appimage |
 
