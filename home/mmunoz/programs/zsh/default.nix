@@ -8,17 +8,24 @@
     enableCompletion = true;
 
     shellAliases = {
+      # System: activate, trial run, inspect
       update = "nh os switch";
       test = "nh os test";
       diff = "nh os build";
+
+      # Maintenance: inputs, edit, format, GC, generations
+      nix-update = "nix flake update && update";
+      nix-edit = "codium ${hostConfig.flakePath}";
+      fmt = "nix fmt ${hostConfig.flakePath}";
       nix-gc = "nh clean all --keep 5";
       nix-history = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-      nix-edit = "codium ${hostConfig.flakePath}";
-      nix-update = "nix flake update && update";
-      sail = "[ -f sail ] && sh sail || sh vendor/bin/sail";
+
+      # Package search and install
       search = "nix search nixpkgs";
       nix-unfree = "NIXPKGS_ALLOW_UNFREE=1 nix profile add --impure";
-      fmt = "nix fmt ${hostConfig.flakePath}";
+
+      # Project bootstrap
+      sail = "[ -f sail ] && sh sail || sh vendor/bin/sail";
     };
 
     history = {
