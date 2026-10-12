@@ -8,15 +8,15 @@
   imports = [
     (./desktop + "/${hostConfig.desktop}.nix")
     ./desktop/fonts.nix
-    ./programs/zsh.nix
+    ./programs/zsh
     ./programs/fastfetch
     ./programs/cli.nix
     ./programs/dev.nix
-    ./programs/git.nix
-    ./programs/ssh.nix
-    ./programs/ghostty.nix
+    ./programs/git
+    ./programs/ssh
+    ./programs/ghostty
     ./programs/opencode
-    ./programs/vscodium.nix
+    ./programs/vscodium
     ./programs/apps.nix
   ];
 }

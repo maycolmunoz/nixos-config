@@ -2,16 +2,23 @@
   home.sessionPath = [ "$HOME/.local/bin" ];
 
   home.packages = with pkgs; [
-    ffmpeg
-    tree
-    wget
+    # Nix
     nixfmt
+
+    # AI agent tooling
     mcp-nixos
-    officecli
     codegraph
+
+    # Files, search and network
     fd
     ripgrep
+    tree
+    wget
+
+    # Media and documents
+    ffmpeg
     yoinks
+    officecli
   ];
 
   programs.nh = {

@@ -17,7 +17,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | `home-manager.nix` | Home-manager module config (`useGlobalPkgs`, `useUserPackages`, user import, `backupFileExtension = "hm-backup"`) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager: `programs/` (zsh, git, ssh, ghostty, opencode/, fastfetch/, cli, dev, vscodium, apps), `desktop/` (gnome, gtk, fonts) |
+| `home/mmunoz/` | Home-manager: `programs/` (program dirs `zsh/`, `git/`, `ssh/`, `ghostty/`, `vscodium/`, `opencode/`, `fastfetch/`; package bundles `cli.nix`, `dev.nix`, `apps.nix`), `desktop/` (gnome, gtk, fonts) |
 | `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`) + shared `xserver.nix` |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd), ydotool, fstrim |
 | `modules/system/` | boot, locale, nix-settings, users, swap, appimage |
@@ -29,11 +29,11 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 - **Desktop selection**: `modules/desktop/default.nix` imports the active desktop. To switch, change `desktop` in `config.nix` and add the file under `home/mmunoz/desktop/`.
 - **Theme**: each `home/mmunoz/desktop/{name}.nix` imports shared `desktop/gtk.nix` (GTK/icon/cursor); `desktop/gnome.nix` dconf only sets desktop-specific keys. `desktop/fonts.nix` stays global.
 - **GNOME settings**: declare them in `gnome.nix` `dconf.settings` so home-manager enforces them on rebuild. Quote dashed keys: `"button-layout" = ":close";` (bare `button-layout` parses as subtraction).
-- **Prompt**: oh-my-zsh `robbyrussell` (the su default) via `programs.zsh.oh-my-zsh` in `zsh.nix`. No starship.
+- **Prompt**: oh-my-zsh `robbyrussell` (the su default) via `programs.zsh.oh-my-zsh` in `zsh/default.nix`. No starship.
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
-- **Home programs** are a single `<name>.nix` file; use `<name>/default.nix` dir only when the program needs multiple files (e.g. `opencode/`). CLI tools with HM modules live in `programs/cli.nix`, GUI apps in `programs/apps.nix`, dev tooling in `programs/dev.nix`.
+- **Home programs** each live in their own `<name>/default.nix` dir (imported extensionless: `./programs/<name>`). CLI tools with HM modules live in `programs/cli.nix`, GUI apps in `programs/apps.nix`, dev tooling in `programs/dev.nix`.
 - **Flake-input HM modules**: import them directly in `home/mmunoz/default.nix`, never inside the program's own `default.nix`.
-- **`home.activation` hooks**: `programs/ssh.nix` and `desktop/fonts.nix` both use `lib.hm.dag.entryAfter [ "writeBoundary" ]` for work that must touch files outside the store (idempotent keygen, font linking + `fc-cache`). `entryAfter "writeBoundary"` is what makes them safe to re-run on every activation. Reuse this pattern for anything similar.
+- **`home.activation` hooks**: `programs/ssh/` and `desktop/fonts.nix` both use `lib.hm.dag.entryAfter [ "writeBoundary" ]` for work that must touch files outside the store (idempotent keygen, font linking + `fc-cache`). `entryAfter "writeBoundary"` is what makes them safe to re-run on every activation. Reuse this pattern for anything similar.
 
 ## Commands
 

@@ -4,12 +4,21 @@
 }:
 {
   home.packages = with pkgs; [
+    # Browsers
     firefox
-    obsidian
-    obs-studio
-    onlyoffice-desktopeditors
     brave
+
+    # Notes
+    obsidian
+
+    # Office suite
+    onlyoffice-desktopeditors
+
+    # Media and speech
+    obs-studio
     handy
+
+    # Virtualization
     gnome-boxes
   ];
 }
