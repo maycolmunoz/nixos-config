@@ -17,7 +17,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | `home-manager.nix` | Home-manager module config (`useGlobalPkgs`, `useUserPackages`, user import, `backupFileExtension = "hm-backup"`) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager: `programs/` (program dirs `zsh/`, `git/`, `ssh/`, `ghostty/`, `vscodium/`, `opencode/`, `fastfetch/`; package bundles `cli.nix`, `dev.nix`, `apps.nix`), `desktop/` (gnome, gtk, fonts) |
+| `home/mmunoz/` | Home-manager: `programs/` (program dirs `zsh/`, `git/`, `ssh/`, `ghostty/`, `vscode/`, `opencode/`, `fastfetch/`; package bundles `cli.nix`, `dev.nix`, `apps.nix`), `desktop/` (gnome, gtk, fonts) |
 | `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`) + shared `xserver.nix` |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd), ydotool, fstrim |
 | `modules/system/` | boot, locale, nix-settings, users, swap, appimage |
@@ -39,7 +39,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 
 - `update` (alias in zsh.nix) → rebuild + switch. `test` (`nh os test`) → safe trial activation. `diff` (`nh os build`) → build without activating.
 - `nix-gc` (alias) → `nh clean all --keep 5` (also runs weekly automatically via `system/nix-settings.nix`).
-- `nix-history` (alias) → list system generations. `nix-edit` (alias) → open the flake in Codium.
+- `nix-history` (alias) → list system generations. `nix-edit` (alias) → open the flake in VS Code.
 - `nix-update` (alias) → `nix flake update` then `update`. `fmt` (alias) → `nix fmt /etc/nixos`.
 - `nix fmt [<file>]` — format all (or one) Nix file(s). Formatter is `nixfmt-tree`.
 - `nix flake update` — update all inputs.
@@ -55,7 +55,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 - **File ownership**: `/etc/nixos` files must be owned by your user, not root: `sudo chown -R $USER:users /etc/nixos/`.
 - **`nix fmt` reindents multiline `''` strings.** For whitespace-sensitive values (e.g. prompt strings with powerline separators), build the string via `+` concatenation instead.
 - **Conflicting dotfiles don't fail the rebuild**: home-manager renames them with `.hm-backup` suffix.
-- **Electron/Chromium apps (Brave, Obsidian, VSCodium) ignore GNOME `button-layout`** — they need per-app settings (system title bar / `window.titleBarStyle: native`).
+- **Electron/Chromium apps (Brave, Obsidian, VS Code) ignore GNOME `button-layout`** — they need per-app settings (system title bar / `window.titleBarStyle: native`).
 
 ## Conventions
 

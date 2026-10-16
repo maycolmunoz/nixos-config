@@ -20,5 +20,8 @@
 
     # Virtualization
     gnome-boxes
+
+    # Editor
+    vscode
   ];
 }

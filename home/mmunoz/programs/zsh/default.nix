@@ -15,7 +15,7 @@
 
       # Maintenance: inputs, edit, format, GC, generations
       nix-update = "nix flake update && update";
-      nix-edit = "codium ${hostConfig.flakePath}";
+      nix-edit = "code ${hostConfig.flakePath}";
       fmt = "nix fmt ${hostConfig.flakePath}";
       nix-gc = "nh clean all --keep 5";
       nix-history = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";

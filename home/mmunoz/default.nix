@@ -16,7 +16,6 @@
     ./programs/ssh
     ./programs/ghostty
     ./programs/opencode
-    ./programs/vscodium
     ./programs/apps.nix
   ];
 }
