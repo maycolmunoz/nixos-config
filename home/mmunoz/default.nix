@@ -13,7 +13,6 @@
     ./programs/cli.nix
     ./programs/dev.nix
     ./programs/git
-    ./programs/ssh
     ./programs/ghostty
     ./programs/opencode
     ./programs/apps.nix
