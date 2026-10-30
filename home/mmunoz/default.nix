@@ -15,6 +15,7 @@
     ./programs/git
     ./programs/ghostty
     ./programs/opencode
+    ./programs/cline
     ./programs/apps.nix
   ];
 }
