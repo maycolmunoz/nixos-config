@@ -15,6 +15,7 @@
     ./programs/git
     ./programs/ghostty
     ./programs/opencode
+    ./programs/antigravity-cli
     ./programs/cline
     ./programs/apps.nix
   ];
