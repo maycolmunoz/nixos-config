@@ -17,7 +17,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 | `home-manager.nix` | Home-manager module config (`useGlobalPkgs`, `useUserPackages`, user import, `backupFileExtension = "hm-backup"`) |
 | `hosts/nixos/default.nix` | Host config; imports `modules/` + hardware.nix |
 | `hosts/nixos/hardware.nix` | Auto-generated, do not edit |
-| `home/mmunoz/` | Home-manager: `programs/` (program dirs `zsh/`, `git/`, `ssh/`, `ghostty/`, `vscode/`, `opencode/`, `fastfetch/`; package bundles `cli.nix`, `dev.nix`, `apps.nix`), `desktop/` (gnome, gtk, fonts) |
+| `home/mmunoz/` | Home-manager: `programs/` (program dirs `zsh/`, `git/`, `ghostty/`, `opencode/`, `fastfetch/`, `antigravity-cli/`, `cline/`; package bundles `cli.nix`, `dev.nix`, `apps.nix`), `desktop/` (gnome, gtk, fonts) |
 | `modules/desktop/` | Desktop selection (`default.nix`) + per-desktop dirs (`gnome/`) + shared `xserver.nix` |
 | `modules/services/` | pipewire, printing, flatpak, fwupd, virtualisation (docker, libvirtd), ydotool, fstrim |
 | `modules/system/` | boot, locale, nix-settings, users, swap, appimage |
@@ -29,11 +29,12 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 - **Desktop selection**: `modules/desktop/default.nix` imports the active desktop. To switch, change `desktop` in `config.nix` and add the file under `home/mmunoz/desktop/`.
 - **Theme**: each `home/mmunoz/desktop/{name}.nix` imports shared `desktop/gtk.nix` (GTK/icon/cursor); `desktop/gnome.nix` dconf only sets desktop-specific keys. `desktop/fonts.nix` stays global.
 - **GNOME settings**: declare them in `gnome.nix` `dconf.settings` so home-manager enforces them on rebuild. Quote dashed keys: `"button-layout" = ":close";` (bare `button-layout` parses as subtraction).
+- **Default apps**: `xdg.mimeApps` in `home/mmunoz/default.nix` generates `~/.config/mimeapps.list` (brave for web, OnlyOffice for PDF). Change the association there, never the file itself. The terminal is set separately via `xdg.terminal-exec` in `programs/ghostty/`.
 - **Prompt**: oh-my-zsh `robbyrussell` (the su default) via `programs.zsh.oh-my-zsh` in `zsh/default.nix`. No starship.
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
 - **Home programs** each live in their own `<name>/default.nix` dir (imported extensionless: `./programs/<name>`). CLI tools with HM modules live in `programs/cli.nix`, GUI apps in `programs/apps.nix`, dev tooling in `programs/dev.nix`.
 - **Flake-input HM modules**: import them directly in `home/mmunoz/default.nix`, never inside the program's own `default.nix`.
-- **`home.activation` hooks**: `programs/ssh/` and `desktop/fonts.nix` both use `lib.hm.dag.entryAfter [ "writeBoundary" ]` for work that must touch files outside the store (idempotent keygen, font linking + `fc-cache`). `entryAfter "writeBoundary"` is what makes them safe to re-run on every activation. Reuse this pattern for anything similar.
+- **`home.activation` hooks**: `programs/cline/` (seeds `~/.cline/data/settings/cline_mcp_settings.json`, which the app rewrites) and `desktop/fonts.nix` (font copy + `fc-cache`) use `lib.hm.dag.entryAfter [ "writeBoundary" ]` for work that must touch files outside the store or files the app rewrites. `entryAfter "writeBoundary"` is what makes them safe to re-run on every activation. Reuse this pattern for anything similar.
 
 ## Commands
 
@@ -55,6 +56,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 - **File ownership**: `/etc/nixos` files must be owned by your user, not root: `sudo chown -R $USER:users /etc/nixos/`.
 - **`nix fmt` reindents multiline `''` strings.** For whitespace-sensitive values (e.g. prompt strings with powerline separators), build the string via `+` concatenation instead.
 - **Conflicting dotfiles don't fail the rebuild**: home-manager renames them with `.hm-backup` suffix.
+- **`~/.config/mimeapps.list` is a read-only store symlink**: it comes from `xdg.mimeApps` in `home/mmunoz/default.nix`. Picking a default app from GNOME Settings or "set as default" in a browser won't stick — edit the config and rebuild.
 - **Electron/Chromium apps (Brave, Obsidian, VS Code) ignore GNOME `button-layout`** — they need per-app settings (system title bar / `window.titleBarStyle: native`).
 
 ## Conventions
