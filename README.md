@@ -79,4 +79,4 @@ Changing defaults from GNOME Settings or from a browser does not persist; edit t
 - **Shell:** Zsh + oh-my-zsh (robbyrussell), autosuggestions, syntax highlighting
 - **Network:** NetworkManager
 - **Nix:** flakes + nix-command, unfree allowed, auto-optimise-store, weekly GC (`--delete-older-than 14d`)
-- **Memory:** zram (zstd, 50%), no swap devices, swappiness 100
+- **Memory:** zram (zstd, 50%), no swap devices, swappiness 100, page-cluster 0
