@@ -1,9 +1,6 @@
 { hostConfig, ... }: {
   services.xserver = {
     enable = true;
-    xkb = {
-      layout = hostConfig.xkbLayout;
-      variant = "";
-    };
+    xkb.layout = hostConfig.xkbLayout;
   };
 }

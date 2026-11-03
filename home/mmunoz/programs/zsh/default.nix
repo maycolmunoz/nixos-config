@@ -5,7 +5,6 @@
     oh-my-zsh.theme = "robbyrussell";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    enableCompletion = true;
 
     shellAliases = {
       # System: activate, trial run, inspect
@@ -28,12 +27,7 @@
       sail = "[ -f sail ] && sh sail || sh vendor/bin/sail";
     };
 
-    history = {
-      size = 10000;
-      path = "$HOME/.zsh_history";
-      ignoreDups = true;
-      share = true;
-    };
+    history.ignoreDups = true;
 
     initContent = ''
       export PATH="$HOME/.local/bin:$PATH"
