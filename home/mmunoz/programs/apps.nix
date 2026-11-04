@@ -12,7 +12,9 @@
     obsidian
 
     # Office suite
-    onlyoffice-desktopeditors
+    (onlyoffice-desktopeditors.override {
+      extraFontPackages = [ corefonts ];
+    })
 
     # Media and speech
     obs-studio

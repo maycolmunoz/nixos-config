@@ -34,7 +34,7 @@ Home-manager is integrated as a NixOS module (not standalone). Changes to `home/
 - **New modules**: add to `modules/default.nix` imports. New home modules add to `home/mmunoz/default.nix` imports.
 - **Home programs** each live in their own `<name>/default.nix` dir (imported extensionless: `./programs/<name>`). CLI tools with HM modules live in `programs/cli.nix`, GUI apps in `programs/apps.nix`, dev tooling in `programs/dev.nix`.
 - **Flake-input HM modules**: import them directly in `home/mmunoz/default.nix`, never inside the program's own `default.nix`.
-- **`home.activation` hooks**: `programs/cline/` (seeds `~/.cline/data/settings/cline_mcp_settings.json`, which the app rewrites) and `desktop/fonts.nix` (font copy + `fc-cache`) use `lib.hm.dag.entryAfter [ "writeBoundary" ]` for work that must touch files outside the store or files the app rewrites. `entryAfter "writeBoundary"` is what makes them safe to re-run on every activation. Reuse this pattern for anything similar.
+- **`home.activation` hooks**: `programs/cline/` (seeds `~/.cline/data/settings/cline_mcp_settings.json`, which the app rewrites) uses `lib.hm.dag.entryAfter [ "writeBoundary" ]` for work that must touch files outside the store or files the app rewrites. `entryAfter "writeBoundary"` is what makes them safe to re-run on every activation. Reuse this pattern for anything similar.
 
 ## Commands
 
