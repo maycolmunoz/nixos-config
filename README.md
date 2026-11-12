@@ -11,7 +11,7 @@ NixOS flake configuration for host `nixos` (x86_64-linux).
 ├── hosts/nixos/              — host-specific (default.nix, hardware.nix)
 ├── home/mmunoz/              — home-manager
 │   ├── default.nix           — user-level settings (xdg.mimeApps) + all home imports
-│   ├── programs/             — program dirs (zsh/, git/, ghostty/, opencode/, fastfetch/, antigravity-cli/, cline/) + package bundles (cli.nix, dev.nix, apps.nix)
+│   ├── programs/             — program dirs (zsh/, git/, ghostty/, opencode/, fastfetch/, antigravity-cli/) + package bundles (cli.nix, dev.nix, apps.nix)
 │   └── desktop/              — gnome, gtk, fonts
 └── modules/
     ├── default.nix           — central importer (uses feature flags)
