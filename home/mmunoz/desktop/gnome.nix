@@ -8,7 +8,6 @@
       { package = pkgs.gnomeExtensions.clipboard-indicator; }
       { package = pkgs.gnomeExtensions.caffeine; }
       { package = pkgs.gnomeExtensions.tiling-shell; }
-      { package = pkgs.gnomeExtensions.focus-timer; }
       { package = pkgs.gnomeExtensions.workspaces-indicator-by-open-apps; }
     ];
   };
@@ -63,7 +62,7 @@
 
     "org/gnome/shell/extensions/clipboard-indicator" = {
       toggle-menu = [ "<Super>v" ];
-      "history-size" = 20;
+      "history-size" = 30;
     };
 
     "org/gnome/shell/extensions/caffeine" = {

@@ -62,7 +62,7 @@ Changing defaults from GNOME Settings or from a browser does not persist; edit t
 
 ## Services
 
-- GNOME (GDM) desktop, with Shell extensions: clipboard-indicator, caffeine, tiling-shell, focus-timer, user-themes, workspaces-indicator
+- GNOME (GDM) desktop, with Shell extensions: clipboard-indicator, caffeine, tiling-shell, user-themes, workspaces-indicator
 - PipeWire (audio, ALSA + PulseAudio compat)
 - CUPS (printing, IPP-USB)
 - Virtualisation (Docker + libvirtd + Spice USB)
